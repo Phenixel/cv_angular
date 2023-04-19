@@ -1,0 +1,72 @@
+<h1>Interface d'administration</h1>
+
+<h2>Ajouter un skill</h2>
+
+<div class="omrs-input-group">
+  <label class="omrs-input-underlined">
+    <input type="text" required [(ngModel)]="newSkill">
+    <span class="omrs-input-label">Entrez un skill</span>
+  </label>
+  <button (click)="addSkill()">Ajouter skill</button>
+</div>
+
+<h2>Liste des skills</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Skill</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let skill of skillsService.getSkills(); let i = index">
+    <td>
+      <span *ngIf="editingSkillIndex !== i">{{ skill }}</span>
+      <input *ngIf="editingSkillIndex === i" type="text" [(ngModel)]="skillsService.getSkills()[i]">
+    </td>
+    <td>
+      <button (click)="editingSkillIndex = i">{{ editingSkillIndex === i ? 'Enregistrer' : 'Modifier' }}</button>
+      <button (click)="deleteSkill(skill)">Supprimer</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+<hr>
+
+<h2>Ajouter une expérience</h2>
+
+<form (ngSubmit)="addExperience()" #experienceForm="ngForm">
+  <div class="omrs-input-group">
+    <label class="omrs-input-underlined">
+      <input type="text" name="company" [(ngModel)]="newExperience.company" required>
+      <span class="omrs-input-label">Nom de l'entreprise</span>
+    </label>
+  </div>
+  <div class="omrs-input-group">
+    <label class="omrs-input-underlined">
+      <input type="text" name="date" [(ngModel)]="newExperience.date" required>
+      <span class="omrs-input-label">Date (ex: Janvier 2020 - Février 2021)</span>
+    </label>
+  </div>
+  <div class="omrs-input-group">
+    <label class="omrs-input-underlined">
+      <input name="description" [(ngModel)]="newExperience.description" required>
+      <span class="omrs-input-label">Description de l'expérience</span>
+    </label>
+  </div>
+  <div class="omrs-input-group">
+    <label class="omrs-input-underlined">
+      <input type="text" name="tasks" [(ngModel)]="newTask" (keyup.enter)="addTask()" [disabled]="!newExperience.tasks">
+      <span class="omrs-input-label">Tâches réalisées</span>
+    </label>
+    <button type="button" (click)="addTask()" [disabled]="!newExperience.tasks">Ajouter une tâche</button>
+  </div>
+  <ul>
+    <li *ngFor="let task of newExperience.tasks">{{ task }}</li>
+  </ul>
+  <button type="submit" [disabled]="!experienceForm.valid">Ajouter l'expérience</button>
+</form>
+

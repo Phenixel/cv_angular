@@ -1,0 +1,19 @@
+.content-formations{
+
+}
+
+.formation{
+  background-color: white;
+  padding: 20px;
+  margin: 5px 0 8px 0;
+  width: 300px;
+  box-shadow: 0 0 2px rgba(255, 165, 0, 0.70);
+  transition: 0.5s;
+}
+
+.formation:hover{
+  cursor: pointer;
+  transition: 0.5s;
+  transform: translate(-5px, -5px);
+  box-shadow: 5px 5px orange;
+}

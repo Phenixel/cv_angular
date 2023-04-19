@@ -1,0 +1,21 @@
+.content-skills{
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.skill{
+  background-color: #c27343;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  width: 70px;
+  text-align: center;
+  transition: 0.5s;
+}
+
+.skill:hover{
+  transition: 0.5s;
+  background-color: #d38b5f;
+  cursor: pointer;
+}

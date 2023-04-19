@@ -1,0 +1,14 @@
+<h2>Expériences professionnelles</h2>
+<div class="xp" *ngFor="let experience of experiences">
+  <p><strong>{{experience.company}}</strong> {{experience.date}}</p>
+  <p>{{experience.description}}</p>
+  <ul>
+    <li *ngFor="let task of experience.tasks">{{task}}</li>
+  </ul>
+</div>
+
+<h2>Volontariat</h2>
+<div class="xp">
+  <p><strong>Beya'had</strong> 2017-2018</p>
+</div>
+
